@@ -5,7 +5,7 @@ from tempfile import NamedTemporaryFile
 import json
 import plotly.graph_objects as go
 
-API_KEY = st.secret["api_key]
+API_KEY = st.secrets["api_key"]
 client = OpenAI(api_key=API_KEY)
 
 # =================
