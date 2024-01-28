@@ -4,6 +4,12 @@ from audio_recorder_streamlit import audio_recorder
 from tempfile import NamedTemporaryFile
 import plotly.graph_objects as go
 import json
+from settings import CAPTION
+
+CAPTION_ALL_PROCESS = CAPTION["ALL_PROCESS"]
+CAPTION_AUDIO_TO_TEXT = CAPTION["AUDIO_TO_TEXT"]
+CAPTION_TEXT_TO_DATA = CAPTION["TEXT_TO_DATA"]
+CAPTION_DATA_TO_OUTPUT = CAPTION["DATA_TO_OUTPUT"]
 
 # OpenAI clientインスタンス
 client = OpenAI(api_key = st.secrets["api_key"])
@@ -114,25 +120,25 @@ st.set_page_config(
 
 # タイトル
 st.title("音声認識デモ")
-st.success(sub_title(["音声", "文字", "データ", "出力"], ["Whisper", "ChatGPT", "PC"]))
+st.success(CAPTION_ALL_PROCESS)
 
 # 音声（入力）
 order_audio = audio_recorder(text="録音　開始／終了", pause_threshold=10, neutral_color="#6aa36f")
 
 if order_audio:
     # 音声　→　文字　【 Whisper 】
-    st.info(sub_title(["音声", "文字"], ["Whisper"]))
+    st.info(CAPTION_AUDIO_TO_TEXT)
     order_text = audio_to_text(order_audio)
     if order_text:
         st.write(order_text)
 
         # 文字　→　データ　【 ChatGPT 】
-        st.info(sub_title(["文字", "データ"], ["ChatGPT"]))
+        st.info(CAPTION_TEXT_TO_DATA)
         order_json, order_list = text_to_data(order_text)
         st.json(order_json)
 
         # データ　→　出力
-        st.info(sub_title(["データ", "出力"], ["PC"]))
+        st.info(CAPTION_DATA_TO_OUTPUT)
         order_figure = data_to_output(order_list)
         st.plotly_chart(order_figure, use_container_width=False)
     else:
