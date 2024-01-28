@@ -37,7 +37,7 @@ def audio_to_text(audio_bytes):
             return False
         # 無音のときは、Falseを返す
         for ng_word in ["視聴", "字幕", "by H", "見てくれて"]:
-            if ng_word in str(response):
+            if ng_word in response:
                 return False
     return response
 
