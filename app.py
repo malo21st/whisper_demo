@@ -108,9 +108,7 @@ def data_to_output(order_lst):
 # =========================
 
 # ページタイトル
-st.set_page_config(
-    page_title = APP_TITLE,
-)
+st.set_page_config(page_title=APP_TITLE,)
 
 # タイトル
 st.title(APP_TITLE)
