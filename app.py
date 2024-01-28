@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 import json
 from settings import CAPTION
 
+APP_TITLE = "音声認識デモ"
 CAPTION_ALL_PROCESS = CAPTION["ALL_PROCESS"]
 CAPTION_AUDIO_TO_TEXT = CAPTION["AUDIO_TO_TEXT"]
 CAPTION_TEXT_TO_DATA = CAPTION["TEXT_TO_DATA"]
@@ -108,11 +109,11 @@ def data_to_output(order_lst):
 
 # ページタイトル
 st.set_page_config(
-    page_title = "音声認識デモ",
+    page_title = APP_TITLE,
 )
 
 # タイトル
-st.title("音声認識デモ")
+st.title(APP_TITLE)
 st.success(CAPTION_ALL_PROCESS)
 
 # 音声（入力）
