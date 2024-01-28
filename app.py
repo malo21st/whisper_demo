@@ -107,6 +107,11 @@ def sub_title(main_lst, sub_lst):
 #      View + Control
 # =========================
 
+# ページタイトル
+st.set_page_config(
+    page_title = "音声認識デモ",
+)
+
 # タイトル
 st.title("音声認識デモ")
 st.success(sub_title(["音声", "文字", "データ", "出力"], ["Whisper", "ChatGPT", "PC"]))
