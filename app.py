@@ -101,13 +101,6 @@ def data_to_output(order_lst):
     )
     return fig
 
-# utility
-def sub_title(main_lst, sub_lst):
-    sub_title = f"**{main_lst[0]}**"
-    for main, sub in zip(main_lst[1:], sub_lst):
-        sub_title += f"&ensp;:arrow_right:&nbsp;{sub}&nbsp;:arrow_right:&ensp;**{main}**"
-    return sub_title
-
 
 # =========================
 #      View + Control
