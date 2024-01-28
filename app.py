@@ -15,9 +15,9 @@ CAPTION_DATA_TO_OUTPUT = CAPTION["DATA_TO_OUTPUT"]
 # OpenAI clientインスタンス
 client = OpenAI(api_key = st.secrets["api_key"])
 
-# =================
-#      Model
-# =================
+# ===============
+#     Model
+# ===============
 
 # 音声　→　文字　【 Whisper 】
 def audio_to_text(audio_bytes):
@@ -104,7 +104,7 @@ def data_to_output(order_lst):
 
 
 # =========================
-#      View + Control
+#     View + Controller
 # =========================
 
 # ページタイトル
