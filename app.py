@@ -2,11 +2,11 @@ from openai import OpenAI
 import streamlit as st
 from audio_recorder_streamlit import audio_recorder
 from tempfile import NamedTemporaryFile
-import json
 import plotly.graph_objects as go
+import json
 
-API_KEY = st.secrets["api_key"]
-client = OpenAI(api_key=API_KEY)
+# OpenAI clientインスタンス
+client = OpenAI(api_key = st.secrets["api_key"])
 
 # =================
 #      Model
@@ -57,7 +57,7 @@ def text_to_data(transcript):
 
 # データ　→　出力
 def data_to_output(order_lst):
-    x_lst, y_lst = [0], [0]
+    x_lst, y_lst = [0], [0] # 表示領域特定のための座標（x, y）リスト
     fig = go.Figure()
     for order in order_lst:
         # 四角形
@@ -76,7 +76,7 @@ def data_to_output(order_lst):
                           )
             x_lst.append(order["radius"] * 2)
             y_lst.append(order["radius"] * 2)
-
+    # レイアウト・表示領域の設定
     fig.update_layout(
         plot_bgcolor='lightgray',
         width = 500,
@@ -97,10 +97,10 @@ def data_to_output(order_lst):
 
 # utility
 def sub_title(main_lst, sub_lst):
-    result = f"**{main_lst[0]}**"
-    for m, s in zip(main_lst[1:], sub_lst):
-        result += f"&ensp;:arrow_right:&nbsp;{s}&nbsp;:arrow_right:&ensp;**{m}**"
-    return result
+    sub_title = f"**{main_lst[0]}**"
+    for main, sub in zip(main_lst[1:], sub_lst):
+        sub_title += f"&ensp;:arrow_right:&nbsp;{sub}&nbsp;:arrow_right:&ensp;**{main}**"
+    return sub_title
 
 
 # =========================
